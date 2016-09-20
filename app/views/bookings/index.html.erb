@@ -1,0 +1,6 @@
+<h1>Bookings</h1>
+<ul id="booking">
+	<% @bookings.each do |booking| %>
+		<li><%= booking.school.name %>- <%=booking.starting_date%>: <%=booking.number_children%></li>
+	<% end %>
+</ul>

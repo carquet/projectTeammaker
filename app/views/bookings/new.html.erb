@@ -1,0 +1,15 @@
+<h1>New Booking</h1>
+<%= form_for @booking do |f| %>
+	
+	<%= f.collection_select :school_id, School.all, :id, :name %>
+	
+	<%= f.label :number_children %>
+	<%= f.number_field :number_children%>
+
+	<%= f.label :starting_date %>
+	<%= f.date_field :starting_date%>
+
+	
+	
+	<%= f.submit "Save booking" %>
+<% end %>

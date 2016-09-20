@@ -1,0 +1,8 @@
+<h1>Add a school</h1>
+<%= form_for @school, url: '/schools' do |f| %>
+	<%= f.label :name %>
+	<%=f.text_field :name %>
+
+	
+	<%= f.submit %>
+<% end %>
