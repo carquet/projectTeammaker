@@ -10,3 +10,16 @@ schools = School.create([
 	{name: 'colegio Rubio'}
 	])
 
+employees = Employee.create([
+	{name: 'Tonio'},
+	{name: 'Ana'},
+	{name: 'Alberto'},
+	{name: 'Eva'},
+	{name: 'Jessica'},
+	{name: 'Alex'},
+	{name: 'Diego'},
+	{name: 'Chris'},
+	{name: 'Rafa'},
+	{name: 'Mariola'},
+	{name: 'Eminio'}
+	])

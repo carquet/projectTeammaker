@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920122419) do
+ActiveRecord::Schema.define(version: 20160920154335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "booking_employees", force: :cascade do |t|
+    t.integer  "booking_id"
+    t.integer  "employee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["booking_id"], name: "index_booking_employees_on_booking_id", using: :btree
+    t.index ["employee_id"], name: "index_booking_employees_on_employee_id", using: :btree
+  end
 
   create_table "bookings", force: :cascade do |t|
     t.datetime "starting_date"
@@ -24,11 +33,19 @@ ActiveRecord::Schema.define(version: 20160920122419) do
     t.index ["school_id"], name: "index_bookings_on_school_id", using: :btree
   end
 
+  create_table "employees", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "booking_employees", "bookings"
+  add_foreign_key "booking_employees", "employees"
   add_foreign_key "bookings", "schools"
 end
