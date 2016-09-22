@@ -26,6 +26,7 @@ class BookingsController < ApplicationController
 			@my_bookings = Booking.where("starting_date=?", params[:selected_date])
 			# specific_school_id = my_bookings.map {|booking| booking.school_id}
 			# @schools = School.where(id:specific_school_id)
+			
 	end
 
 
