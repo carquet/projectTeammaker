@@ -22,10 +22,12 @@ class BookingsController < ApplicationController
 	end
 		
 	def show_by_day
-			my_bookings = Booking.where("starting_date=?", params[:selected_date])
-			specific_school_id = my_bookings.map {|booking| booking.school_id}
-			@schools = School.where(id:specific_school_id)
+			@chosen_date = params[:selected_date]
+			@my_bookings = Booking.where("starting_date=?", params[:selected_date])
+			# specific_school_id = my_bookings.map {|booking| booking.school_id}
+			# @schools = School.where(id:specific_school_id)
 	end
+
 
 	
 #	def pepe_el_pollo
