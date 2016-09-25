@@ -5,8 +5,9 @@
 	<%= form_tag('/bookings/show_by_day', method: "post") do %>
 	  <%= label_tag(:selected_date, "Search for:") %>
 	  <%= date_field_tag(:selected_date) %>
-	  <%= submit_tag("Search") %>
+	  <%= submit_tag("Search", class: "btn btn-info") %>
 	<% end %>
+	<i class="fa fa-envira fa-lg" aria-hidden="true"></i>
 
 
 	

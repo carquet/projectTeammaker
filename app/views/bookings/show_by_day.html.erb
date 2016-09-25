@@ -1,12 +1,13 @@
 
 <h1>Booking for the <%= @chosen_date %></h1>
 <%@my_bookings.each do |booking| %>
-<ul>
-	<li>School name: <%= booking.school.name %></li>
-	<li>number of attendees: <%=booking.number_children%></li>
-	<li>number of staff member needed <%=booking.number_children / 12 %></li>
-	
-
-</ul>
+	<ul>
+		<li>School name: <%= booking.school.name %></li>
+		<li>number of attendees: <%=booking.number_children%></li>
+		<li>number of staff member needed <%=booking.number_children / 12 %></li>
+	</ul>
 <%end%>
+		available employees<%@available_employees.each do |employee|%></li>
+			<%=employee.name%>
+		<%end%>
 	
