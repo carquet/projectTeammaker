@@ -4,6 +4,8 @@ class Api::BookingsController < ApplicationController
 		render json: @bookings
 	end
 
+	
+
 	def new
 		@booking = Booking.new
 		render 'bookings/new'

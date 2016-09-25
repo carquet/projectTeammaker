@@ -13,6 +13,10 @@ class Booking < ApplicationRecord
     self.employees.push(employee)
   end
 
+  def start_time
+    self.schools.start ##Where 'start' is a attribute of type 'Date' accessible through MyModel's relationship, not sure what that means!!!
+  end
+
 
   RULES = 12
 

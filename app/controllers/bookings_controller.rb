@@ -3,6 +3,10 @@ class BookingsController < ApplicationController
 	def index
 		render(:index)
 	end
+
+	def show_calendar
+		render 'day'
+	end
 # => 
 
 # 	def create

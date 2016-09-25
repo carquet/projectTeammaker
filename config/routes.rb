@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/', to: 'site#home', as: 'home'
+  get '/show/calendar', to: 'bookings#show_calendar', as: 'calendar'
 
   namespace :api do
     resources :employees do
