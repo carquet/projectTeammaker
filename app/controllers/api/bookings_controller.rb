@@ -1,21 +1,26 @@
 class Api::BookingsController < ApplicationController
 	def index
 		bookings = Booking.all
-		render json: bookings
+		render json: @bookings
+	end
+
+	def new
+		@booking = Booking.new
+		render 'bookings/new'
 	end
 
 	def create
-		booking = Booking.create(sandwich_params)
-		render json: booking
+		@booking = Booking.create(booking_params)
+		render json: @booking
 	end
 
 	def show
-		booking = Booking.find_by(id: params[:id])
-		unless booking
+		@booking = Booking.find_by(id: params[:id])
+		unless @booking
 			render json: {error: "there is no booking at this date"}, status: 404
 			return
 		end
-		render json: booking
+		render json: @booking
 	end
 
 	def update

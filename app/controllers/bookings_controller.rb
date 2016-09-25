@@ -1,8 +1,9 @@
 class BookingsController < ApplicationController
-# 	def new
-# 		@booking = Booking.new
-# 		render 'new'
-# 	end
+# 	
+	def index
+		render(:index)
+	end
+# => 
 
 # 	def create
 # 		@booking = Booking.new booking_params
@@ -13,9 +14,7 @@ class BookingsController < ApplicationController
 # 		end		
 # 	end
 
-# 	def index
-# 		@bookings = Booking.all
-# 	end
+# 	
 
 # 	def select_by_day
 # 		render 'day'
