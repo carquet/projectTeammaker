@@ -23,3 +23,9 @@ employees = Employee.create([
 	{name: 'Mariola'},
 	{name: 'Eminio'}
 	])
+
+bookings = Booking.create([
+	{starting_date: '19.09.2016'.to_date, number_children: 30 , school_id: 1},
+	{starting_date: '20.09.2016'.to_date, number_children: 45, school_id: 2},
+	{starting_date: '20.09.2016'.to_date, number_children: 50, school_id: 1}
+	])
