@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   get '/', to: 'site#home', as: 'home'
 
   namespace :api do
+    resources :employees do
+      resources :bookings
+      post '/booking/add', to: 'employees#add_booking'
+    end
     resources :bookings do
       resources :employees
         post '/employee/add', to: 'bookings#add_employee'
