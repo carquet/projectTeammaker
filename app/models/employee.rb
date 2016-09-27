@@ -4,7 +4,7 @@ class Employee < ApplicationRecord
 
 
 	def as_json(options={})
-    super(only: [:name],
+    super(only: [:name, :id],
     	include: :bookings)
   	end
 
@@ -13,8 +13,7 @@ class Employee < ApplicationRecord
 	end
 
 	def self.get_available(date)
-				where.not(id: includes(:bookings).references(:bookings)
-					.where(bookings: { starting_date: date }).pluck(:employee_id))
+				where.not(id: includes(:bookings).references(:bookings).where(bookings: { starting_date: date }).pluck(:employee_id))
 	end
 end
 

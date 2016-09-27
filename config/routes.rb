@@ -3,15 +3,19 @@ Rails.application.routes.draw do
   get '/show/calendar', to: 'bookings#show_calendar', as: 'calendar'
 
   namespace :api do
-    resources :employees do
-      resources :bookings
-      post '/booking/add', to: 'employees#add_booking'
-    end
+    post 'bookings/show_by_day', to: 'bookings#show_by_day' 
+    #post 'bookings/show_not_employee', to: 'bookings#show_not_available_employee'
     resources :bookings do
       resources :employees
         post '/employee/add', to: 'bookings#add_employee'
     end
+    resources :employees do
+       resources :bookings
+       post '/booking/add', to: 'employees#add_booking'
+    end
   end
+    # 
+    
   
   # get '/bookings/pepe', to: 'bookings#pepe_el_pollo'
   # get '/bookings/by_day', to: 'bookings#select_by_day'
