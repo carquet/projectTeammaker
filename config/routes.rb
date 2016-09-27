@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     post 'bookings/show_by_day', to: 'bookings#show_by_day' 
-    #post 'bookings/show_not_employee', to: 'bookings#show_not_available_employee'
+    
     resources :bookings do
       resources :employees
         post '/employee/add', to: 'bookings#add_employee'
@@ -18,13 +18,7 @@ Rails.application.routes.draw do
     
   
   # get '/bookings/pepe', to: 'bookings#pepe_el_pollo'
-  # get '/bookings/by_day', to: 'bookings#select_by_day'
-  # post '/bookings/show_by_day', to: 'bookings#show_by_day'
-  # resources :schools
-  # resources :bookings
-  # resources :schools do
-  # 	resources :bookings
-  # end
+  
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

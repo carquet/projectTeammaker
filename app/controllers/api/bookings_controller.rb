@@ -2,14 +2,20 @@ class Api::BookingsController < ApplicationController
 	
 	def show_by_day
 		bookings = Booking.where(starting_date: params[:date])
-		render json: bookings
+		available_employees = Booking.where(starting_date: params[:date]).joins(:employees).pluck(:name)
+		not_available_employee = []
+			Employee.all.each do |employee| 
+				has_booking = employee.bookings.where(starting_date: params[:date])
+					if has_booking.empty?
+						not_available_employee << employee
+					end
+			end	
+		render json: {
+			bookings_by_day: bookings,
+			available_employees: available_employees,
+			not_available_employee: not_available_employee 
+		}
 	end
-
-	# def show_not_available_employee
-	# 	available_employees = Booking.where(name: starting_date: params[:date]).joins(:employees).pluck(:name)
-	# 	not_available_employees = 
-	# 	render json: {available_employees: available_employees, }
-	# end
 	
 	def index
 		bookings = Booking.all
@@ -21,10 +27,12 @@ class Api::BookingsController < ApplicationController
 		render 'bookings/new'
 	end
 
+
 	def create
 		@booking = Booking.create(booking_params)
 		render json: @booking
 	end
+
 
 	def show
 		@booking = Booking.find_by(id: params[:id])
