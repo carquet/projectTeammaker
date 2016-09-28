@@ -2,18 +2,18 @@ class Api::BookingsController < ApplicationController
 	
 	def show_by_day
 		bookings = Booking.where(starting_date: params[:date])
-		available_employees = Booking.where(starting_date: params[:date]).joins(:employees).pluck(:name)
-		not_available_employee = []
+		not_available_employees = Booking.where(starting_date: params[:date]).joins(:employees).pluck(:name)
+		available_employee = []
 			Employee.all.each do |employee| 
 				has_booking = employee.bookings.where(starting_date: params[:date])
 					if has_booking.empty?
-						not_available_employee << employee
+						available_employee << employee
 					end
 			end	
 		render json: {
 			bookings_by_day: bookings,
-			available_employees: available_employees,
-			not_available_employee: not_available_employee 
+			not_available_employees: not_available_employees,
+			available_employee: available_employee 
 		}
 	end
 	
