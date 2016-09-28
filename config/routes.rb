@@ -4,14 +4,14 @@ Rails.application.routes.draw do
 
   namespace :api do
     post 'bookings/show_by_day', to: 'bookings#show_by_day' 
-    
+    post 'bookings/booked', to: 'bookings#booked'
     resources :bookings do
       resources :employees
-        post '/employee/add', to: 'bookings#add_employee'
+        post '/add', to: 'bookings#add_employee'
     end
     resources :employees do
        resources :bookings
-       post '/booking/add', to: 'employees#add_booking'
+       post '/add', to: 'employees#add_booking'
     end
   end
     # 
