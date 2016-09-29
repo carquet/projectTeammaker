@@ -3,29 +3,29 @@
 <p id="notice"><%= notice %></p>
 <h1>Booking of the Month</h1>
 	<div class="row">
-	    <div class="col-md-6">
+	    <div class="col-md-4">
 			<%= month_calendar do |date| %>
 			<div class="date"><%= date %></div>
 				<% end %>
 		</div>
 
+		<div class="js-booking box-booking col-md-4">
+			<h4 id="js-title">Booking on this date: </h4>
+			<p id="js-booking_of_the_day"></p>
+		</div>
+
 		<div class="row">
-		    <div class="col-md-4">
+		    <div class="available col-md-3">
 				<p id= "js-available-employee"></p>
 			</div>
 		</div>	
 		
 
-		<div class="js-booking col-md-3">
-			<h4 id="js-title">Booking on this date: </h4>
-			<p id="js-booking_of_the_day"></p>
-		</div>
-
-
-		<div class="col-md-3">
+		<div class="js-confirm-box col-md-3 col-md-offset-6">
 			<h4>Employees working on that day </h4>
 				<p id="js-employees">	
 				</p>
+			<button id="js-confirm-btn">Confirm</button>
 		</div>
 	
 </div>

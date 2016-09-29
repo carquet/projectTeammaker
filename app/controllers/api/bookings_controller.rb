@@ -1,7 +1,6 @@
 class Api::BookingsController < ApplicationController
 	
 	def show_by_day
-
 		bookings = Booking.where(starting_date: params[:date])
 		#Booking.where(starting_date: params[:date]).joins(:employees).pluck(:name)
 		available_employee = []
@@ -20,7 +19,28 @@ class Api::BookingsController < ApplicationController
 	def booked
 		booking = Booking.find(params[:data])
 		booked_employees = booking.employees
-		render json:  booked_employees
+		render json:  {booked_employees: booked_employees,
+					booking: booking}
+	end
+
+
+	def add_employee
+		booking = Booking.find_by(id: params[:data][:currentBookingId])
+		
+			unless booking
+				render json: {error: "there is no booking at this date"}, status: 404
+				return
+			end
+
+		employees_to_hire = Employee.where(id: params[:data][:employeesId])
+		newly_employed = []
+
+			employees_to_hire.each do |employee|
+				if booking.employees.find_by(id: employee) == nil
+					booking.employees.push(employee)
+				end
+			end
+		render json: {success: "Your staff is confirmed"}, status: 201
 	end
 
 
@@ -72,21 +92,7 @@ class Api::BookingsController < ApplicationController
 		render json: booking
 	end
 
-	def add_employee
-		booking = Booking.find_by(id: params[:booking_id])
-		unless booking
-			render json: {error: "there is no booking at this date"}, status: 404
-			return
-		end
-
-		employee = Employee.find_by(id: params[:employee_id])
-		unless employee
-			render json: {error: "there is no employee"}, status: 404
-			return
-		end
-		booking.add_employee(employee)
-		render json: booking
-	end
+	
 
 	private
 	def booking_params
