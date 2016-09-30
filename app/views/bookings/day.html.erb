@@ -1,5 +1,3 @@
-
-
 <p id="notice"><%= notice %></p>
 <h1>Booking of the Month</h1>
 	<div class="row">
@@ -8,29 +6,45 @@
 			<div class="date"><%= date %></div>
 				<% end %>
 		</div>
+			<div class="col-md-4" >
+				<table class="table table-striped table-hover ">
+				  <thead>
+				    <tr>
+				      <th id="js-title">Booking on this date:</th>
+				      <th>number of children</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  <tr class="info">
+				      <td id="js-booking_of_the_day"></td>
+				      <td id= "js-number_of_children"></td>
+				    </tr>
+				  </tbody>
+				</table>
 
-		<div class="js-booking box-booking col-md-4">
-			<h4 id="js-title">Booking on this date: </h4>
-			<p id="js-booking_of_the_day"></p>
-		</div>
-
-		<div class="row">
-		    <div class="available col-md-3">
-				<p id= "js-available-employee"></p>
+				<div class="panel panel-success">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Employees working on that day</h3>
+				  </div>
+				  <div class="panel-body">
+				    Panel content
+				    <p id="js-employees"></p>
+				    <button id="js-confirm-btn">Confirm</button>
+				  </div>
+				</div> 
 			</div>
-		</div>	
-		
 
-		<div class="js-confirm-box col-md-3 col-md-offset-6">
-			<h4>Employees working on that day </h4>
-				<p id="js-employees">	
-				</p>
-			<button id="js-confirm-btn">Confirm</button>
-		</div>
-	
-</div>
-
-
+			<div class="js-confirm-box col-md-3 ">
+				<div class="panel panel-info">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Staff available</h3>
+				  </div>
+				  <div class="panel-body" id="js-available-employee">
+				  </div>
+				</div>
+			</div>
+				
+	</div>
 
 
 

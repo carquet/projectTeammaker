@@ -12,7 +12,7 @@ $(document).on('ready', function(){
 			error: handleError
 		})	
 	})
-	$('.js-booking').on('click', 'h4', function(){
+	$('#js-booking_of_the_day').on('click', 'h4', function(){
 		var bookingId = $(this).attr('id');
 		var request2 = $.ajax({
 			type: 'post',
@@ -81,17 +81,19 @@ function handleSuccess(response){
 function showAvailableEmployees(availableEmployees){
 	$('#js-available-employee').empty();
 	availableEmployees.forEach(function(employee){
-		var employeehtml = "<li id="+ employee.id + ">" + employee.name + "<button class='clickme'>hire</button></li>";
+		var employeehtml = "<li id="+ employee.id + ">" + employee.name + "<button class='clickme'>add me</button></li>";
 		$('#js-available-employee').append(employeehtml);
 	})
 }
 
-
+//Puts all the booking in a table
 function showBookingsByDay(bookings){
 	$('#js-booking_of_the_day').empty();
 	bookings.forEach(function(theBooking){
-		var html = "<h4 class='bookings' id="+ theBooking.id + ">"  + theBooking.school.name + "</h4><ul><li>Number of attendees: " + theBooking.number_children + "</li></ul>";
-		$('#js-booking_of_the_day').append(html);	
+		var html = "<h4 class='bookings' id="+ theBooking.id + ">"  + theBooking.school.name + "</h4>";
+		var html2= "<ul><li>Number of attendees: " + theBooking.number_children + "</li></ul>";
+		$('#js-booking_of_the_day').append(html);
+		$('#js-number_of_children').append(html2);
 	})
 
 	
@@ -102,6 +104,7 @@ function handleError(err){
 
 
 
+    
 	
 
 //WHY HERE WITHIN THE DOCUMENT READY?
@@ -112,4 +115,3 @@ function handleError(err){
 //related to a son (li button) in case it exist!(freaking fathers, never know they have sons or not!)
 			
  
-	
